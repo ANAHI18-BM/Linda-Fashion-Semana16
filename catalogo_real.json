@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Short de lino bordado",
+    "categoria": "Shorts",
+    "talla": "S",
+    "precio": "23.99",
+    "imagen": "lissey_short-de-lino-bordado-2491.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/short-de-lino-bordado-2491",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2491/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  },
+  {
+    "nombre": "Camisa de Lino K898",
+    "categoria": "Camisas",
+    "talla": "S",
+    "precio": "18.50",
+    "imagen": "lissey_camisa-de-lino-k898-2482.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/camisa-de-lino-k898-2482",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2482/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  },
+  {
+    "nombre": "Falda Short Z1599",
+    "categoria": "Faldas",
+    "talla": "S",
+    "precio": "23.00",
+    "imagen": "lissey_falda-short-z1599-2472.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/falda-short-z1599-2472",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2472/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  },
+  {
+    "nombre": "Blusa E058",
+    "categoria": "Blusas",
+    "talla": "P",
+    "precio": "24.15",
+    "imagen": "lissey_blusa-e058-2478.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/blusa-e058-2478",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2478/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  },
+  {
+    "nombre": "Blusa Polka E053",
+    "categoria": "Blusas",
+    "talla": "P",
+    "precio": "24.15",
+    "imagen": "lissey_blusa-polka-e053-2475.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/blusa-polka-e053-2475",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2475/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  },
+  {
+    "nombre": "Top E019",
+    "categoria": "Blusas",
+    "talla": "P",
+    "precio": "24.15",
+    "imagen": "lissey_top-e019-2268.jpg",
+    "fuente_url": "https://www.ropalissey.com/shop/top-e019-2268",
+    "imagen_fuente": "https://www.ropalissey.com/web/image/product.template/2268/image_1024?unique=c33fc5b",
+    "descripcion": "Prenda del catálogo de Ropa Lissey. Consulta el enlace de origen para colores y tallas adicionales."
+  }
+]

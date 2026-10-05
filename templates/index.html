@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- PORTADA / HERO -->
+    <header id="inicio" class="hero">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="titulo-principal">
+                        Linda Fashion Boutique
+                    </h1>
+
+                    <p class="subtitulo">
+                        Moda femenina moderna, elegante y auténtica para mujeres que desean resaltar su estilo con confianza.
+                    </p>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mt-4">
+                        <a href="#productos" class="btn btn-rosa btn-lg">
+                            Ver colección
+                        </a>
+                        <a href="#registro" class="btn btn-light btn-lg fw-bold">
+                            Registrar prenda
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <img src="{{ url_for('static', filename='img/mujeres.jpg') }}" alt="Moda femenina Linda Fashion Boutique" class="img-fluid hero-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+
+        <!-- BIENVENIDA -->
+        <section class="text-center p-5">
+            <h2 class="mb-4">Bienvenidas a Linda Fashion Boutique</h2>
+            <p class="mb-4">
+                Somos una boutique femenina ubicada en Shushufindi, dedicada a ofrecer prendas modernas, elegantes y accesibles.
+                Nuestro propósito es brindar una experiencia de compra única con ropa que combine estilo, comodidad y tendencia,
+                permitiendo que cada clienta encuentre la prenda ideal para cualquier ocasión.
+            </p>
+
+            <div class="row text-center mt-4 g-4">
+                <div class="col-md-4">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Moda Actual</h4>
+                            <p>
+                                Prendas inspiradas en tendencias femeninas modernas, juveniles y elegantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Calidad y Estilo</h4>
+                            <p>
+                                Seleccionamos ropa con buen acabado, comodidad y diseños que resaltan la personalidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Atención Personalizada</h4>
+                            <p>
+                                Acompañamos a nuestras clientas para ayudarles a elegir prendas según su gusto y ocasión.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIÉNES SOMOS -->
+        <section id="quienes" class="mt-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <h2>Quiénes Somos</h2>
+                    <p>
+                        Linda Fashion Boutique nace con el propósito de resaltar la belleza, la confianza y el estilo de cada mujer
+                        mediante prendas modernas, elegantes y de excelente calidad. Nuestro compromiso es brindar atención personalizada,
+                        ofreciendo una experiencia de compra cercana, confiable y enfocada en la satisfacción de nuestras clientas.
+                    </p>
+                    <p>
+                        Aspiramos a consolidarnos como una boutique reconocida en Shushufindi por la calidad de nuestros productos,
+                        el buen servicio y la confianza que transmitimos en cada compra.
+                    </p>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <img src="{{ url_for('static', filename='img/ropa2.jpg') }}" class="img-fluid rounded shadow" alt="Boutique de ropa femenina">
+                </div>
+            </div>
+        </section>
+
+        <!-- COLECCIÓN DESTACADA → CONTENEDOR DINÁMICO (usa tarjetas Bootstrap) -->
+        <section id="productos" class="mt-5">
+            <h2 class="text-center mb-5">Colección Destacada</h2>
+            <!-- INDICADOR DE CARGA (SPINNER BOOTSTRAP - REQUISITO OBLIGATORIO) -->
+            <div id="cargandoProductos" class="text-center my-4 d-none">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando colección...</span>
+                </div>
+                <p class="mt-2">Cargando nuestros productos...</p>
+            </div>
+            <div id="contenedorProductos" class="row g-4">
+                {% for producto in productos %}
+                {% if producto.estado == "Disponible" %}
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card shadow h-100">
+                        {% if producto.imagen %}<img src="{{ url_for('static', filename='img/' + producto.imagen) }}" class="card-img-top" alt="{{ producto.nombre }}">{% else %}<div class="p-5 text-center bg-light">Fotografía pendiente</div>{% endif %}
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ producto.nombre }}</h5>
+                            <p class="card-text">{{ producto.descripcion }}</p>
+                            <p class="precio-prenda">${{ "%.2f"|format(producto.precio) }}</p>
+                            <span class="badge bg-success">Disponible</span><p class="mt-3"><a class="btn btn-rosa" href="{{ url_for('catalogo') }}">Ver colección y comprar</a></p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% else %}
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        No hay productos disponibles en este momento. ¡Pronto actualizaremos nuestra colección!
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="mensajeSinProductos" class="alert alert-info text-center mt-4 d-none">
+                No hay productos disponibles en este momento. ¡Pronto actualizaremos nuestra colección!
+            </div>
+        </section>
+
+        <!-- BENEFICIOS -->
+        <section class="mt-5">
+            <h2 class="text-center mb-4">¿Por qué elegir Linda Fashion Boutique?</h2>
+
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Variedad</h4>
+                            <p>Vestidos, blusas, jeans, conjuntos, accesorios y más.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Asesoría</h4>
+                            <p>Te ayudamos a elegir la prenda ideal según tu estilo y necesidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Tendencia</h4>
+                            <p>Actualizamos nuestra colección con moda femenina actual y elegante.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card shadow h-100 p-3">
+                        <div class="card-body">
+                            <h4>Confianza</h4>
+                            <p>Brindamos una experiencia cercana, segura y orientada a cada clienta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="mt-5 text-center">
+            <h2 class="mb-4">Video Promocional</h2>
+            <p class="mb-4">
+                Descubre el estilo y la esencia de Linda Fashion Boutique a través de nuestra propuesta visual de moda femenina.
+            </p>
+
+            <video controls class="shadow rounded w-100" style="max-width: 700px;">
+                <source src="{{ url_for('static', filename='video/Video de ropa.mp4') }}" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+        </section>
+
+        <section id="registro" class="text-center my-5"><h2>Gestión de prendas</h2><p>Accede al panel para agregar, modificar y eliminar los productos del catálogo.</p><a class="btn btn-rosa" href="{{ url_for('formulario_producto') }}">Registrar prenda</a></section>
+        <!-- CONTACTO -->
+        <section id="contacto" class="mt-5">
+            <h2 class="text-center mb-4">Contáctanos</h2>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card shadow h-100 border-0">
+                        <div class="card-body p-4">
+                            <h4 class="mb-3">Información de contacto</h4>
+                            <p><strong>Correo:</strong> fashionshushufindi@gmail.com</p>
+                            <p><strong>Teléfono:</strong> 0991234567</p>
+                            <p><strong>Dirección:</strong> Shushufindi - Sucumbíos</p>
+                            <p><strong>Horario:</strong> Lunes a Sábado de 08h00 a 18h00</p>
+
+                            <div class="mt-3">
+                                <a href="https://www.facebook.com/profile.php?id=100078310595037" class="btn btn-primary m-1" target="_blank" rel="noopener noreferrer">
+                                    Facebook
+                                </a>
+                                <a href="https://instagram.com" class="btn btn-danger m-1" target="_blank" rel="noopener noreferrer">
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow h-100 border-0">
+                        <div class="card-body p-4">
+                            <h4 class="mb-3">Envíanos un mensaje</h4>
+
+                            <form method="post" action="{{ url_for('index', _anchor='contacto') }}" novalidate>{{ contacto.hidden_tag() }}{% for field in contacto if field.name != 'csrf_token' %}<div class="mb-3">{{ field.label(class='form-label') }}{{ field(class='form-control') }}{% for error in field.errors %}<p class="text-danger">{{ error }}</p>{% endfor %}</div>{% endfor %}<button class="btn btn-success" type="submit">Enviar mensaje</button></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMOCIÓN -->
+        <aside class="alert alert-warning mt-5 text-center shadow">
+            <h4>Promoción Especial</h4>
+            <p class="mb-2">
+                Obtén un <strong>20% de descuento</strong> en compras superiores a <strong>$80</strong>.
+            </p>
+            <p class="mb-0">
+                Linda Fashion Boutique te acompaña con estilo, elegancia y atención personalizada.
+            </p>
+        </aside>
+
+    </main>
+
+    <!-- MODAL DE CONFIRMACIÓN BOOTSTRAP (REQUISITO OBLIGATORIO) -->
+    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloModal">Confirmar Acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="cuerpoModal">
+                    ¿Estás seguro de realizar esta acción? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btnConfirmar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

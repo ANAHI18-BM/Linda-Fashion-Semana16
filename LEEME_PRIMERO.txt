@@ -1,0 +1,25 @@
+ACTUALIZACION SIN REINSTALAR
+1. Detén el servidor anterior en su terminal con Ctrl+C.
+2. Copia el contenido de esta carpeta dentro de tu carpeta actual Linda_Fashion_Boutique_Final. Acepta reemplazar archivos. Conserva tu .env y .venv.
+3. En la terminal de esa carpeta ejecuta, UNA línea cada vez:
+.\.venv\Scripts\python.exe -m flask --app app init-db
+.\.venv\Scripts\python.exe importar_catalogo.py
+.\.venv\Scripts\python.exe app.py
+4. Abre http://127.0.0.1:5000/coleccion y pulsa Ctrl+F5.
+
+Se añaden seis prendas y seis fotografías diferentes. Volver a importar no duplica esas prendas. No se borran ni sobrescriben tus registros anteriores.
+Datos y fotografías: catálogo público de Ropa Lissey, consultado el 4 de octubre de 2026. Cada producto tiene enlace de origen. Las imágenes son del proveedor y conservan sus marcas; no se afirma autoría propia. Antes de uso comercial confirma permiso del proveedor.
+Precios referenciales publicados: los precios de la página pueden diferir de los impresos en la foto (Top E019). No se inventa existencia física en la boutique; la disponibilidad local y las ventas de demostración deben explicarse como tales.
+
+El carrito registra una venta y sus detalles en PostgreSQL y permite imprimir un comprobante interno. No emite factura electrónica autorizada por el SRI ni cobra pagos en línea.
+Para mostrar TU WhatsApp añade BOUTIQUE_WHATSAPP=593XXXXXXXXX a TU .env, con tu número real en formato internacional, sin + ni espacios. Reinicia el servidor. No uses el teléfono de Ropa Lissey como si fuera el de tu boutique.
+
+VIDEO SEMANA 16 (3 a 5 minutos)
+0:00 Presenta el nombre y objetivo de la boutique y muestra colección, búsqueda y categorías.
+0:30 Inicia sesión y muestra las páginas administrativas.
+1:00 Demuestra crear, listar, editar y eliminar un proveedor, un producto asociado y un registro de facturación asociado a un cliente. Utiliza registros de prueba separados, etiquetados como prueba; para eliminar sigue factura, producto y proveedor. No borres ventas reales.
+2:45 Muestra que un producto está relacionado con su proveedor y una factura con cliente y producto. Explica que hay claves primarias/foráneas y consultas JOIN.
+3:10 Agrega dos prendas al carrito, modifica cantidades, confirma con un cliente y muestra el comprobante guardado. Explica sus límites con honestidad.
+4:00 Muestra GitHub, explica cómo ejecutar y cierra sesión. Comprueba que una ruta administrativa exige iniciar sesión.
+Antes de grabar ensaya el recorrido. La tarea exige CRUD de al menos tres tablas relacionadas; mostrar únicamente el carrito no basta. La modalidad video tiene máximo 80% según la consigna enviada.
+Semana 15 además exige Render y PostgreSQL desplegado. Este ZIP no publica tu aplicación ni sube a GitHub automáticamente.

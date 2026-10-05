@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}<main class="container py-5"><div class="card shadow border-0 mx-auto" style="max-width:800px"><div class="card-body p-4 p-md-5">
+<h1>{{ titulo }}</h1>
+{% if titulo == 'Crear cuenta' %}<p>Crea tu cuenta de administración para el proyecto académico. Usa una contraseña de al menos 8 caracteres.</p>{% endif %}
+<form method="post" enctype="multipart/form-data" novalidate>{{ form.hidden_tag() }}
+{% for field in form if field.name != 'csrf_token' %}<div class="mb-3">{{ field.label(class='form-label fw-semibold') }}{{ field(class='form-select' if field.type == 'SelectField' else 'form-control') }}{% for error in field.errors %}<p class="text-danger small mb-0">{{ error }}</p>{% endfor %}</div>{% endfor %}
+<button class="btn btn-rosa" type="submit">{{ 'Entrar' if titulo == 'Iniciar sesión' else 'Guardar' }}</button> <a class="btn btn-outline-secondary" href="{{ url_for(volver) }}">Volver</a>
+{% if titulo == 'Iniciar sesión' %}<p class="mt-3">¿Aún no tienes cuenta? <a href="{{ url_for('registro') }}">Crear cuenta</a></p>{% endif %}
+</form></div></div></main>{% endblock %}
